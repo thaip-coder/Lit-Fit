@@ -1,7 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 var path = require("path");
-var sequelize = require("sequelize");
+var Sequelize = require("sequelize");
 
 var db = require("./models");
 
