@@ -1,14 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "password",
     "database": "exampledb",
-=======
-    "password": "2222",
-    "database": "booktrackerdb",
-    "port": 3306,
->>>>>>> 7bf0c311a13169f8f2baee63ac79462fb43ec229
     "host": "localhost",
     "dialect": "mysql"
   },
