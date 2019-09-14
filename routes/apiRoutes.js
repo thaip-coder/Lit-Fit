@@ -17,6 +17,17 @@ module.exports = function(app) {
       res.json(result)
     });
   });
+  // get all books by a particular author
+  app.get("/api/:author", function(req, res){
+    // refine logic to match parameter input with data
+    db.Books.findAll({
+      where: {
+        author: req.params.author
+      }
+    }).then(function(result){
+      res.json(result)
+    });
+  });
 
   // Create a new example
   app.post("/api/books", function(req, res) {
@@ -28,6 +39,13 @@ module.exports = function(app) {
   // Delete a book by id
   app.delete("/api/:id", function(req, res) {
     db.Books.destroy({ where: { id: req.params.id } }).then(function(result) {
+      res.json(result);
+    });
+  });
+  // Delete a book by title
+  app.delete("/api/:title", function(req, res) {
+    // refine logic to better match params and title
+    db.Books.destroy({ where: { title: req.params.title } }).then(function(result) {
       res.json(result);
     });
   });
