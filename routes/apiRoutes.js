@@ -1,24 +1,52 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all books
+  app.get("/api/all", function(req, res) {
+    db.Books.findAll({}).then(function(result) {
+      res.json(result);
+    });
+  });
+  // Get books within a specified category
+  app.get("/api/:category", function(req, res){
+    db.Books.findAll({
+      where: {
+        category: req.params.category
+      }
+    }).then(function(result){
+      res.json(result)
+    });
+  });
+  // get all books by a particular author
+  app.get("/api/:author", function(req, res){
+    // refine logic to match parameter input with data
+    db.Books.findAll({
+      where: {
+        author: req.params.author
+      }
+    }).then(function(result){
+      res.json(result)
     });
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/books", function(req, res) {
+    db.Books.create(req.body).then(function(dbBooks) {
+      res.json(dbBooks);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // Delete a book by id
+  app.delete("/api/:id", function(req, res) {
+    db.Books.destroy({ where: { id: req.params.id } }).then(function(result) {
+      res.json(result);
+    });
+  });
+  // Delete a book by title
+  app.delete("/api/:title", function(req, res) {
+    // refine logic to better match params and title
+    db.Books.destroy({ where: { title: req.params.title } }).then(function(result) {
+      res.json(result);
     });
   });
 };
