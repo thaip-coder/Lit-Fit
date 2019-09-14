@@ -9,11 +9,6 @@ var db = require("./models");
 var app = express();
 var PORT = /*process.env.JAWSDB_URL ||*/ 3000;
 
-// Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.static("public"));
-
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);

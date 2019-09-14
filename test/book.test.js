@@ -17,21 +17,13 @@ describe("GET /api/all", function() {
     return db.sequelize.sync({ force: true });
   });
 
-  it("should find all books", function(done) {
-    // Filler books for the db to test with
-    db.Books.bulkCreate([
-      {
-        title: "Murder on the Orient Express",
-        author: "First Description",
-        pages: 184,
-        status: "Complete"
-      },
-      {
-        title: "Harry Potter and the Sorcerer's Stone",
-        author: "J. K. Rowling",
-        pages: 330,
-        status: "Complete"
-      }
+  it("should find all examples", function(done) {
+    // Add some examples to the db to test with
+    db.Example.bulkCreate([
+      { text: "Book 1", 
+      author: "First Description" },
+      { text: "Book 2", 
+      description: "Second Description" }
     ]).then(function() {
       // Request the route that returns all examples
       request.get("/api/all").end(function(err, res) {
@@ -50,23 +42,11 @@ describe("GET /api/all", function() {
 
         expect(responseBody[0])
           .to.be.an("object")
-          .that.includes({
-            id: 1,
-            title: "Murder on the Orient Express",
-            author: "First Description",
-            pages: 184,
-            status: "Complete"
-          });
+          .that.includes({ text: "Book 1", description: "First Description" });
 
         expect(responseBody[1])
           .to.be.an("object")
-          .that.includes({
-            id: 2,
-            title: "Harry Potter and the Sorcerer's Stone",
-            author: "J. K. Rowling",
-            pages: 330,
-            status: "Complete"
-          });
+          .that.includes({ text: "Book 2", description: "Second Description" });
 
         // The `done` function is used to end any asynchronous tests
         done();
@@ -74,3 +54,4 @@ describe("GET /api/all", function() {
     });
   });
 });
+
