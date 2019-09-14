@@ -3,6 +3,7 @@
     "username": "root",
     "password": "2222",
     "database": "booktrackerdb",
+    "port": 3306,
     "host": "localhost",
     "dialect": "mysql"
   },

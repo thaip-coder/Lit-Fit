@@ -2,18 +2,8 @@ var db = require("../models");
 var path = require("path");
 
 module.exports = function(app) {
-  // Load index page
+  // blog route loads blog.html
   app.get("/", function(req, res) {
-    db.Books.findAll({}).then(function(dbBooks) {
-      res.render("index", {
-        msg: "Welcome!",
-        books: dbBooks
-      });
-    });
-  });
-
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 };

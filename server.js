@@ -9,6 +9,9 @@ var db = require("./models");
 var app = express();
 var PORT = /*process.env.JAWSDB_URL ||*/ 3000;
 
+// Static directory to be served
+app.use(express.static("public"));
+
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
