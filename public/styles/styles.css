@@ -3,12 +3,26 @@
 }
 
 
+/* Set background image, and position with xpos ypos value */
+body {
+  background-image: url("../assets/pic/read1.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #38261F;
+  background-size: 1680px 1600px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+
 
 /* accordian code */
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  background-color: #eee;
-  color: #444;
+  background-color: green;
+  border-radius: 10px;
+  color: blue;
   cursor: pointer;
   padding: 18px;
   width: 25%;
@@ -26,7 +40,7 @@
 /* Style the accordion panel. Note: hidden by default */
 .panel {
   padding: 0 18px;
-  background-color: white;
+  background-color: blueviolet;
   display: none;
   overflow: hidden;
 }
@@ -36,7 +50,7 @@
 .icon-bar {
   position: fixed;
   top: 70%;
-  -webkit-transform: translateY(-50%);
+  -webkit-transform: translateY(-20%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }

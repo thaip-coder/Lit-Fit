@@ -20,9 +20,11 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
+var name = getElementsByClassName("nameInp");
 
+var readInp = getElementsByClassName("inputs");
 
-
+readInp.createTextNode(name);
 
 
 
