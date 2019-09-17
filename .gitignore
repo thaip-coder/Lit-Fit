@@ -2,8 +2,4 @@
 node_modules
 npm-debug.log
 .env
-<<<<<<< HEAD
 package-lock.json
-=======
-package-lock.json
->>>>>>> 82a422fcafc553aedaaf42556872cbc9f41527a0
