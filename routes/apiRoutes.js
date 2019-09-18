@@ -39,6 +39,23 @@ module.exports = function(app) {
     });
   });
 
+  // Update a book
+  app.put("/api/book/:id", function(req, res) {
+    db.Books.update(
+      {
+          status: req.body.status,
+          pages: req.body.progress
+      }, 
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+      ).then(function(dbBooks) {
+      res.json(dbBooks);
+    });
+  });
+
   // Delete a book by id
   app.delete("/api/:id", function(req, res) {
     db.Books.destroy({ where: { id: req.params.id } }).then(function(result) {

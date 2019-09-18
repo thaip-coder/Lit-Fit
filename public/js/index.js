@@ -19,11 +19,11 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-var name = getElementsByClassName("nameInp");
+var name = document.getElementsByClassName("nameInp");
 
-var readInp = getElementsByClassName("inputs");
+var readInp = document.getElementsByClassName("inputs");
 
-readInp.createTextNode(name);
+//readInp.createTextNode(name);
 
 /* CODE FOR DISPLAYING STUFF BASED OFF OF API ROUTING, on click events post to our database API urls then use get requests to pull data and display it */
 // declare books as an empty array, this will be updated every time the showBooks function is called and iterated to display in our HTML
@@ -31,9 +31,44 @@ var books = [];
 
 // function to display our user's books
 function showBooks(){
-  $.get("/api/books", function(data){
+  $.get("/api/all", function(data){
     books = data;
     // call function to display rows/display rows?
+    // ID OF TABLE CONTAINER TBD
+    //$("#table").empty();
+    // loop over books object array to populate table
+    for (let i=0; i < books.length; i++) {
+      let bookStat;
+      if (books[i].status) { bookStat = "In Progress" } else { bookStat = "Complete" }
+      $("#table").append(`<tr><td>${books[i].title}</td><td>${books[i].author}</td><td> ${books[i].pages} / ${books[i].totalPages}</td><td><button class="status" data-bookid="${books[i].id}">${bookStat}</button></td></tr>`)
+    }
+  })
+}
+// on click event for add book button
+//$("#nb").on("click", showBooks);
+showBooks();
+$(document).on("click", "button.status",updateStatus);
+
+// function to edit books table / update database
+function updateStatus(event){
+  //event.preventDefault();
+  let id = $(this).data("bookid");
+  // to do logic to boolean book status
+  book[id].status = false;
+  let newstatus = {
+    status: book[id].status,
+    progress: book[id].pages
+  }
+  $.put("/api/book/"+id, function(req, res){
+    /*
+    db.Books.update({
+      {
+        status: bookStat
+      },
+      where: {
+        id: req.params.id
+      }
+    })*/
   })
 }
 
@@ -50,7 +85,7 @@ function newUser(event) {
   $.post("/api/users", user);
 }
 // calls newUser upon clicking of appropriate button
-$("#nu").on("click", newUser());
+$("#nu").on("click", newUser);
 // function to add a book
 function newBook(event) {
   event.preventDefault();
@@ -67,7 +102,7 @@ function newBook(event) {
     db.Books.create(newBook).then(function(dbBooks) {
       res.json(dbBooks);
     });
-  }
+  });
 }
 // on click functionality
-$("#nb").on("click", newBook(event));
+$("#nb").on("click", newBook);
