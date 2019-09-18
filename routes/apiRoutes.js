@@ -8,31 +8,34 @@ module.exports = function(app) {
     });
   });
   // Get books within a specified category
-  app.get("/api/:category", function(req, res){
+  app.get("/api/cat/:category", function(req, res){
     db.Books.findAll({
       where: {
         category: req.params.category
       }
     }).then(function(result){
-      res.json(result)
+      res.json(result);
     });
   });
   // get all books by a particular author
-  app.get("/api/:author", function(req, res){
+  app.get("/api/author/:author", function(req, res){
     // refine logic to match parameter input with data
     db.Books.findAll({
       where: {
         author: req.params.author
       }
     }).then(function(result){
-      res.json(result)
+      res.json(result);
     });
   });
-
-  // Create a new example
-  app.post("/api/books", function(req, res) {
-    db.Books.create(req.body).then(function(dbBooks) {
-      res.json(dbBooks);
+  // find a single book by one id
+  app.get("/api/id/:id", function(req, res){
+    db.Books.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result){
+      res.json(result);
     });
   });
 
