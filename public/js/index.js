@@ -26,11 +26,14 @@ var readInp = getElementsByClassName("inputs");
 readInp.createTextNode(name);
 
 /* CODE FOR DISPLAYING STUFF BASED OFF OF API ROUTING, on click events post to our database API urls then use get requests to pull data and display it */
+// declare books as an empty array, this will be updated every time the showBooks function is called and iterated to display in our HTML
+var books = [];
 
 // function to display our user's books
 function showBooks(){
   $.get("/api/books", function(data){
-    
+    books = data;
+    // call function to display rows/display rows?
   })
 }
 

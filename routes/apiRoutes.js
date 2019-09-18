@@ -39,13 +39,6 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new example
-  app.post("/api/books", function(req, res) {
-    db.Books.create(req.body).then(function(dbBooks) {
-      res.json(dbBooks);
-    });
-  });
-
   // Delete a book by id
   app.delete("/api/:id", function(req, res) {
     db.Books.destroy({ where: { id: req.params.id } }).then(function(result) {
