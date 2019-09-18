@@ -1,4 +1,3 @@
-
 // accordian code
 
 var acc = document.getElementsByClassName("accordion");
@@ -26,106 +25,46 @@ var readInp = getElementsByClassName("inputs");
 
 readInp.createTextNode(name);
 
+/* CODE FOR DISPLAYING STUFF BASED OFF OF API ROUTING, on click events post to our database API urls then use get requests to pull data and display it */
 
+// function to display our user's books
+function showBooks(){
+  $.get("/api/books", function(data){
+    
+  })
+}
 
-// // Get references to page elements
-// var $exampleText = $("#example-text");
-// var $exampleDescription = $("#example-description");
-// var $submitBtn = $("#submit");
-// var $exampleList = $("#example-list");
-
-// // The API object contains methods for each kind of request we'll make
-// var API = {
-//   saveExample: function(example) {
-//     return $.ajax({
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       type: "POST",
-//       url: "api/examples",
-//       data: JSON.stringify(example)
-//     });
-//   },
-//   getExamples: function() {
-//     return $.ajax({
-//       url: "api/examples",
-//       type: "GET"
-//     });
-//   },
-//   deleteExample: function(id) {
-//     return $.ajax({
-//       url: "api/examples/" + id,
-//       type: "DELETE"
-//     });
-//   }
-// };
-
-// // refreshExamples gets new examples from the db and repopulates the list
-// var refreshExamples = function() {
-//   API.getExamples().then(function(data) {
-//     var $examples = data.map(function(example) {
-//       var $a = $("<a>")
-//         .text(example.text)
-//         .attr("href", "/example/" + example.id);
-
-//       var $li = $("<li>")
-//         .attr({
-//           class: "list-group-item",
-//           "data-id": example.id
-//         })
-//         .append($a);
-
-//       var $button = $("<button>")
-//         .addClass("btn btn-danger float-right delete")
-//         .text("ｘ");
-
-//       $li.append($button);
-
-//       return $li;
-//     });
-
-//     $exampleList.empty();
-//     $exampleList.append($examples);
-//   });
-// };
-
-// // handleFormSubmit is called whenever we submit a new example
-// // Save the new example to the db and refresh the list
-// var handleFormSubmit = function(event) {
-//   event.preventDefault();
-
-//   var example = {
-//     text: $exampleText.val().trim(),
-//     description: $exampleDescription.val().trim()
-//   };
-
-//   if (!(example.text && example.description)) {
-//     alert("You must enter an example text and description!");
-//     return;
-//   }
-
-//   API.saveExample(example).then(function() {
-//     refreshExamples();
-//   });
-
-//   $exampleText.val("");
-//   $exampleDescription.val("");
-// };
-
-// // handleDeleteBtnClick is called when an example's delete button is clicked
-// // Remove the example from the db and refresh the list
-// var handleDeleteBtnClick = function() {
-//   var idToDelete = $(this)
-//     .parent()
-//     .attr("data-id");
-
-//   API.deleteExample(idToDelete).then(function() {
-//     refreshExamples();
-//   });
-// };
-
-// // Add event listeners to the submit and delete buttons
-// $submitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
-
-
+// function to create a new user data and post it to the database
+function newUser(event) {
+  event.preventDefault();
+  // store input fields into an object
+  var user = {
+    UserName: $("#nam").val(),
+    password: $("#bok").val(),
+    booksGoal: $("#mg").val()
+  };
+  // posts the user to the users table
+  $.post("/api/users", user);
+}
+// calls newUser upon clicking of appropriate button
+$("#nu").on("click", newUser());
+// function to add a book
+function newBook(event) {
+  event.preventDefault();
+  // store values in a variable
+  var newBook = {
+    title: $("").val(),
+    author:$("").val(),
+    pages:$("").val(),
+    status:$("").val(),
+    description:$("").val()
+  }
+  // may need app.post ?
+  $.post("/api/books", function(req, res) {
+    db.Books.create(newBook).then(function(dbBooks) {
+      res.json(dbBooks);
+    });
+  }
+}
+// on click functionality
+$("#nb").on("click", newBook(event));

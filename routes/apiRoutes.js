@@ -14,7 +14,7 @@ module.exports = function(app) {
         category: req.params.category
       }
     }).then(function(result){
-      res.json(result)
+      res.json(result);
     });
   });
   // get all books by a particular author
@@ -25,7 +25,7 @@ module.exports = function(app) {
         author: req.params.author
       }
     }).then(function(result){
-      res.json(result)
+      res.json(result);
     });
   });
   // find a single book by one id
@@ -35,7 +35,7 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(result){
-      res.json(result)
+      res.json(result);
     });
   });
 
