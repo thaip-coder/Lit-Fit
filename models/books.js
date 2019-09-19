@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
         }
       }
     },
-    pages: {
+    totalPages: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -32,14 +32,9 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false
     },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Please enter text"
-        }
-      }
+    pages: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     }
   });
   return Books;

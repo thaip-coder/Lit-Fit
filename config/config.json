@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Ghar@309",
+    "password": "password",
     "database": "booktrackerdb",
     "host": "localhost",
     "dialect": "mysql"
