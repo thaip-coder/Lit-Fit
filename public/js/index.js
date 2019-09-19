@@ -19,11 +19,11 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-var name = getElementsByClassName("nameInp");
+var name = document.getElementsByClassName("nameInp");
 
-var readInp = getElementsByClassName("inputs");
+var readInp = document.getElementsByClassName("inputs");
 
-readInp.createTextNode(name);
+//readInp.createTextNode(name);
 
 /* CODE FOR DISPLAYING STUFF BASED OFF OF API ROUTING, on click events post to our database API urls then use get requests to pull data and display it */
 // declare books as an empty array, this will be updated every time the showBooks function is called and iterated to display in our HTML
@@ -31,11 +31,59 @@ var books = [];
 
 // function to display our user's books
 function showBooks(){
-  $.get("/api/books", function(data){
+  $.get("/api/all", function(data){
     books = data;
     // call function to display rows/display rows?
+    // ID OF TABLE CONTAINER TBD
+    //$("#table").empty();
+    // loop over books object array to populate table
+    for (let i=0; i < books.length; i++) {
+      let bookStat;
+      if (books[i].status) { bookStat = "In Progress" } else { bookStat = "Complete" }
+      $("#table").append(`<tr><td>${books[i].title}</td><td>${books[i].author}</td><td> <span id="span${books[i].id}" class="inactive pageprog" data-pageid="span${books[i].id}" contenteditable="true">${books[i].pages}</span> / ${books[i].totalPages} </td><td><select data-selectid="${books[i].id}" name="Status">
+      <option value="inprogress">In Progress</option>
+      <option value="complete">Complete</option></select>
+    </select></td><td><button class="update" data-updateid="${books[i].id}">Update</button></td></tr>`)
+    }
   })
 }
+// on click event for add book button
+//$("#nb").on("click", showBooks);
+showBooks();
+
+// declare progress?
+/*var progress
+// edit button functionality
+function toggleEdit () {
+  if ($("span.pageprog").is(":focus")) {
+    //$(this).removeClass("inactive");
+    //$(this).addClass("active");
+    console.log("this is active")
+    let id = $(this).data("pageid");
+    progress = {
+      progress: $("#span"+id).val()
+    } 
+  } 
+}*/
+
+// function to edit books table / update database / update button
+function updateStatus(event){
+  event.preventDefault();
+  let id = $(this).data("updateid");
+  console.log(id)
+  console.log("Row updated!")
+  // update the object in the object array of books with the values from the row somehow
+ // books[id].status = // the value of the dropdown in the row
+ // books[id].pages = // the value of the input in the row
+  let newstatus = {
+    status: books[id].status,
+    pages: books[id].pages
+  }
+  // posts the edits to the table
+  $.put("/api/book/"+id, newstatus)
+}
+// on click for the update status function
+$(document).on("click", "button.update",updateStatus)
 
 // function to create a new user data and post it to the database
 function newUser(event) {
@@ -50,7 +98,7 @@ function newUser(event) {
   $.post("/api/users", user);
 }
 // calls newUser upon clicking of appropriate button
-$("#nu").on("click", newUser());
+$(document).on("click", "button.nb", newUser);
 // function to add a book
 function newBook(event) {
   event.preventDefault();
@@ -67,7 +115,7 @@ function newBook(event) {
     db.Books.create(newBook).then(function(dbBooks) {
       res.json(dbBooks);
     });
-  }
+  });
 }
 // on click functionality
-$("#nb").on("click", newBook(event));
+$("#nb").on("click", newBook);
