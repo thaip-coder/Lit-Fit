@@ -44,7 +44,7 @@ module.exports = function(app) {
     db.Books.update(
       {
           status: req.body.status,
-          pages: req.body.progress
+          pages: req.body.pages
       }, 
       {
         where: {
