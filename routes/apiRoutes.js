@@ -7,18 +7,18 @@ module.exports = function (app) {
       res.json(result);
     });
   });
-  // Get books within a specified category
-  app.get("/api/cat/:category", function(req, res){
+  // Get books within a specified status (complete or incomplete)
+  /* app.get("/api/status/:status", function(req, res){
     db.Books.findAll({
       where: {
-        category: req.params.category
+        status: req.params.status
       }
     }).then(function(result){
       res.json(result);
     });
-  });
+  }); */
   // get all books by a particular author
-  app.get("/api/author/:author", function(req, res){
+ /* app.get("/api/author/:author", function(req, res){
     // refine logic to match parameter input with data
     db.Books.findAll({
       where: {
@@ -27,7 +27,7 @@ module.exports = function (app) {
     }).then(function(result){
       res.json(result);
     });
-  });
+  }); */
   // find a single book by one id
   app.get("/api/id/:id", function(req, res){
     db.Books.findOne({
@@ -38,9 +38,21 @@ module.exports = function (app) {
       res.json(result);
     });
   });
-
+  // Add a new  book
+  app.post("/api/all", function(req, res) {
+    db.Books.create({
+      title: req.body.title,
+      author: req.body.author,
+      totalPages: req.body.totalPages,
+      status: true,
+      pages: 0
+    }).then(function(results){
+      res.json(results);
+    });
+  });
   // Update a book
   app.put("/api/book/:id", function(req, res) {
+    //  res.json({"a":"b"});
     db.Books.update(
       {
           status: req.body.status,
@@ -55,18 +67,20 @@ module.exports = function (app) {
       res.json(dbBooks);
     });
   });
-
   // Delete a book by id
-  app.delete("/api/:id", function (req, res) {
+  /*app.delete("/api/:id", function (req, res) {
     db.Books.destroy({ where: { id: req.params.id } }).then(function (result) {
       res.json(result);
     });
-  });
-  // Delete a book by title
-  app.delete("/api/:title", function(req, res) {
-    // refine logic to better match params and title
-    db.Books.destroy({ where: { title: req.params.title } }).then(function(result) {
-      res.json(result);
+  });*/
+  // Get user's information
+  app.get("/api/users/:id", function(req, res){
+    db.Users.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(results){
+      res.json(results);
     });
   });
 };

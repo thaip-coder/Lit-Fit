@@ -38,9 +38,9 @@ function showBooks(){
     //$("#table").empty();
     // loop over books object array to populate table
     for (let i=0; i < books.length; i++) {
-      let bookStat;
+      let bookStat = "";
       if (books[i].status) { bookStat = "In Progress" } else { bookStat = "Complete" }
-      $("#table").append(`<tr><td>${books[i].title}</td><td>${books[i].author}</td><td> <span id="span${books[i].id}" class="inactive pageprog" data-pageid="span${books[i].id}" contenteditable="true">${books[i].pages}</span> / ${books[i].totalPages} </td><td><select data-selectid="${books[i].id}" name="Status">
+      $("#table").append(`<tr><td>${books[i].title}</td><td>${books[i].author}</td><td> <span id="span${books[i].id}" data-pageid="${books[i].id}" contenteditable="true">${books[i].pages}</span> / ${books[i].totalPages} </td><td><select id="select${books[i].id}" name="Status">
       <option value="inprogress">In Progress</option>
       <option value="complete">Complete</option></select>
     </select></td><td><button class="update" data-updateid="${books[i].id}">Update</button></td></tr>`)
@@ -68,13 +68,25 @@ function toggleEdit () {
 
 // function to edit books table / update database / update button
 function updateStatus(event){
+
+
   event.preventDefault();
   let id = $(this).data("updateid");
   console.log(id)
   console.log("Row updated!")
+
   // update the object in the object array of books with the values from the row somehow
- // books[id].status = // the value of the dropdown in the row
- // books[id].pages = // the value of the input in the row
+  let spanid = "span"+id
+  console.log($("#"+spanid).text());
+  let selectid = "select"+id;
+  let statusSelect = $("#"+selectid).val();
+  if (statusSelect === "inprogress" ) {
+    books[id].status = true;
+  } else {
+    books[id].status = false;
+  }
+  books[id].pages = parseInt($("#"+spanid).text());
+
   let newstatus = {
     status: books[id].status,
     pages: books[id].pages
