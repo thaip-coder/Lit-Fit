@@ -5,6 +5,13 @@ body {
   background-size: 1440px 1080px;
 }
 
+#avatar {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    align-content: center;
+}
+
 nav {
     opacity: 1;
     border-bottom: solid 2px grey;
@@ -21,33 +28,7 @@ nav {
     margin-bottom: 17px;
 }
 
-
-.header {
-    background: #4aaaa5;
-    color: #fff;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+#userInfo {
+    margin-bottom: 15px;
 }
 
-.bio {
-    color: #4aaaa5;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.footer {
-    text-align: center;
-    border-top: 5px solid #4aaaa5;
-    padding-top: 40px;
-    background: #666;
-    color: #fff;
-    font-size: .8rem;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#submit {
-    background: #4aaaa5;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 6px 18px 6px 18px;
-    margin-top: 8px;
-    border: none;
-}
