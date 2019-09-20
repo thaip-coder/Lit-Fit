@@ -34,6 +34,11 @@ nav {
     color: #FAF6F0;
 }
 
+#confirmReg {
+    background-color: #182A10;
+    color: #FAF6F0;
+}
+
 #userInfo {
     margin-bottom: 15px;
 }
