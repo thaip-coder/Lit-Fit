@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width = device-width, initial-scale = 1">
 
-  <title>Bootstrap Portfolio</title>
+  <title>Book Tracker</title>
 
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -38,7 +38,7 @@
             <div class="row" style="width: 100%; margin-left: 2px;">
 
               <div class="collapse" id="collapseExample" style="width: 100%;">
-                <div class="card card-body" style="margin-bottom: 15px;">
+                <div class="card card-body" style="margin-bottom: 15px; padding-bottom: 0px;">
 
                     <!-- Register Form -->
                     <form>
@@ -59,6 +59,8 @@
                           </div>
                         <hr>
                         <button type="submit" class="btn btn-primary">Register</button>
+                        <br>
+                        <p>If already a user please <a id="login" href="#" data-toggle="modal" data-target="#loginModal">Login</a></p>
                     </form>
               
                 </div>
@@ -86,7 +88,7 @@
             </ul>
             
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at lectus id nunc consectetur tincidunt viverra et urna. Phasellus ac felis vestibulum, elementum arcu non, accumsan eros. Pellentesque eu elementum elit, vitae congue lectus. Vivamus cursus leo nunc, eu dapibus lectus auctor sit amet. Suspendisse non risus justo. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at lectus id nunc consectetur tincidunt viverra et urna. 
             </p>
           </div>
         </div>
@@ -194,7 +196,36 @@
       </div> <!-- End of body Row -->
   </div><!-- End of Container -->
 
-     
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- Login Form -->
+          <div class="modal-body">
+              <div class="form-group">
+                  <label for="inputEmail">Email address</label>
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+              </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+  </div>
 
 </body>
       
