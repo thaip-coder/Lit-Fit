@@ -2,15 +2,16 @@ body {
     background-image: url(../images/read1.jpeg);
     background-repeat: no-repeat;
   background-position: center;
-  background-size: 1440px 1440px;
+  background-size: 1440px 1080px;
 }
 
 nav {
     opacity: 1;
+    border-bottom: solid 2px grey;
 }
 
-#title {
-    margin-left: 16px;
+.card {
+    opacity: 0.9;
 }
 
 #register {
