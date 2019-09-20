@@ -12,6 +12,10 @@ var PORT = /*process.env.JAWSDB_URL*/ 3000;
 // Static directory to be served
 app.use(express.static("public"));
 
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
