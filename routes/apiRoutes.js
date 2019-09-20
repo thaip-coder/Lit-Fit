@@ -17,17 +17,6 @@ module.exports = function (app) {
       res.json(result);
     });
   }); */
-  // get all books by a particular author
- /* app.get("/api/author/:author", function(req, res){
-    // refine logic to match parameter input with data
-    db.Books.findAll({
-      where: {
-        author: req.params.author
-      }
-    }).then(function(result){
-      res.json(result);
-    });
-  }); */
   // find a single book by one id
   app.get("/api/id/:id", function(req, res){
     db.Books.findOne({
@@ -73,6 +62,22 @@ module.exports = function (app) {
       res.json(result);
     });
   });*/
+  // Get all users
+  app.get("/api/users", function(req,res){
+    db.Users.findAll({}).then(function(results){
+      res.json(results);
+    });
+  });
+  // Add user information
+  app.post("/api/users", function(req, res){
+    db.Users.create({
+      UserName: req.body.UserName,
+      password: req.body.password,
+      booksGoal: req.body.booksGoal
+    }).then(function(results){
+      res.json(results);
+    });
+  });
   // Get user's information
   app.get("/api/users/:id", function(req, res){
     db.Users.findOne({

@@ -34,8 +34,6 @@ function showBooks(){
   $.get("/api/all", function(data){
     books = data;
     // call function to display rows/display rows?
-    // ID OF TABLE CONTAINER TBD
-    //$("#table").empty();
     // loop over books object array to populate table
     for (let i=0; i < books.length; i++) {
       let bookStat = "";
@@ -47,34 +45,13 @@ function showBooks(){
     }
   })
 }
-// on click event for add book button
-//$("#nb").on("click", showBooks);
+// run showBooks
 showBooks();
-
-// declare progress?
-/*var progress
-// edit button functionality
-function toggleEdit () {
-  if ($("span.pageprog").is(":focus")) {
-    //$(this).removeClass("inactive");
-    //$(this).addClass("active");
-    console.log("this is active")
-    let id = $(this).data("pageid");
-    progress = {
-      progress: $("#span"+id).val()
-    } 
-  } 
-}*/
 
 // function to edit books table / update database / update button
 function updateStatus(event){
-
-
   event.preventDefault();
   let id = $(this).data("updateid");
-  console.log(id)
-  console.log("Row updated!")
-
   // update the object in the object array of books with the values from the row somehow
   let spanid = "span"+id
   console.log($("#"+spanid).text());
@@ -92,7 +69,7 @@ function updateStatus(event){
     pages: books[id].pages
   }
   // posts the edits to the table
-  $.put("/api/book/"+id, newstatus)
+  $.put("/api/book/"+id, newstatus).then(console.log("Row updated!"))
 }
 // on click for the update status function
 $(document).on("click", "button.update",updateStatus)
@@ -111,6 +88,7 @@ function newUser(event) {
 }
 // calls newUser upon clicking of appropriate button
 $(document).on("click", "button.nb", newUser);
+
 // function to add a book
 function newBook(event) {
   event.preventDefault();
@@ -118,16 +96,15 @@ function newBook(event) {
   var newBook = {
     title: $("").val(),
     author:$("").val(),
-    pages:$("").val(),
-    status:$("").val(),
-    description:$("").val()
+    totalPages:$("").val(),
+    status:$("").val()
   }
   // may need app.post ?
   $.post("/api/books", function(req, res) {
     db.Books.create(newBook).then(function(dbBooks) {
       res.json(dbBooks);
     });
-  });
-}
+  }).then(showBooks);
+};
 // on click functionality
-$("#nb").on("click", newBook);
+$(document).on("click","#nb",newBook);
