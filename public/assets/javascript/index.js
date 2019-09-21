@@ -1,5 +1,6 @@
 $(document).ready(function(){
 // Login Modal
+$("#logout").hide();
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 });
@@ -56,6 +57,10 @@ function login (){
   });
 };
 $(document).on("click", "button#login2", login);
+
+function logout() {
+  loggedIn = false;
+}
 
 // function to edit books table / update database / update button
 function updateStatus(event){
@@ -129,18 +134,15 @@ function newBook(event) {
 $(document).on("click","#nb",newBook);
 
 $("#confirmReg").on("click", function() {
-  // Collapses Register form
- $("#collapseExample").removeClass("show");
-$("#loginModal").modal("toggle");
- // Hides register button
- //$("#register").hide()
+  $("#collapseExample").removeClass("show");
+  $("#loginModal").modal("toggle");
+  $("#register").hide();
+  $("#logout").show();
 })
 
 $("#login2").on("click", function() {
-  // Collapses Register form
- $("#collapseExample").removeClass("show");
- $("#loginModal").modal("toggle");
- 
+  $("#collapseExample").removeClass("show");
+  $("#loginModal").modal("toggle");
 })
 // closing document.ready function
 });
