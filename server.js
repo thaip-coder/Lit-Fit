@@ -21,7 +21,7 @@ app.use("/public", express.static(__dirname+"/public"));
 var db = require("./models");
 
 var app = express();
-var PORT = /*process.env.JAWSDB_URL ||*/ 3000;
+var PORT = process.env.PORT || 3000;
 
 // Static directory to be served
 app.use(express.static("public"));
