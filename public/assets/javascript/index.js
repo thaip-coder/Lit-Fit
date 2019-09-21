@@ -118,7 +118,7 @@ function newUser(event) {
 // calls newUser upon clicking of appropriate button
 $(document).on("click", "button#confirmReg", newUser);
 // function to add a book
-function newBook(event) {
+/*function newBook(event) {
   event.preventDefault();
   // store values in a variable
   var newBook = {
@@ -133,7 +133,7 @@ function newBook(event) {
       res.json(dbBooks);
     });
   }).then(showBooks);
-};
+};*/
 // function to add a blank row to our table
 function tableAdd(){
   $("tbody").append(`<tr><td class="pt-3-half" contenteditable="true"><input class="form-control" id="newTitle" placeholder="Enter title"></td><td "pt-3-half"><input class="form-control" id="newAuthor" placeholder="Enter author"></td><td class="pt-3-half"><input class="form-control" id="newPages" placeholder="Pages read?"></td><td "pt-3-half"><input class="form-control" id="newTotal" placeholder="Total pages"></td>
