@@ -8,7 +8,7 @@ body {
     background-image: url(../images/read1.jpeg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100% 100%;
+    background-size: 200% 200%;
 }
 
 #avatar {
@@ -59,6 +59,16 @@ nav {
 }
 
 #addBook {
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #182A10;
     color: #FAF6F0;
+    text-decoration: none;
+    
 }
-
+.addBookClass {
+    color: #FAF6F0!important;
+    text-decoration: none;
+}
