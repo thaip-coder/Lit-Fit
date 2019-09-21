@@ -8,7 +8,7 @@ $('#myModal').on('shown.bs.modal', function () {
 // declare books as an empty array, this will be updated every time the showBooks function is called and iterated to display in our HTML
 var books = [];
 // boolean to see if someone is logged in, defaults to false
-var loggedIn = false;
+let loggedIn = false;
 // function to display our user's books
 function showBooks(){
   $.get("/api/all", function(data){
