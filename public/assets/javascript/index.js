@@ -8,28 +8,51 @@ $('#myModal').on('shown.bs.modal', function () {
 /* BACKEND INTEGRATION */
 // declare books as an empty array, this will be updated every time the showBooks function is called and iterated to display in our HTML
 var books = [];
+// boolean to see if someone is logged in, defaults to false
+var loggedIn = false;
 // function to display our user's books
 function showBooks(){
   $.get("/api/all", function(data){
+    // store data in an array
     books = data;
-    // call function to display rows/display rows?
-    // loop over books object array to populate table
-    for (let i = 0; i < books.length; i++) {
-      let bookStat = "";
-      if (books[i].status) { bookStat = "In Progress" } else { bookStat = "Complete" }
-      $("tbody").append(`<tr><td class="pt-3-half" contenteditable="true">${books[i].title}</td><td>${books[i].author}</td><td class="pt-3-half" contenteditable="true"> <span id="span${books[i].id}" data-pageid="${books[i].id}" contenteditable="true">${books[i].pages}</span></td><td class="pt-3-half"> ${books[i].totalPages} </td>
-      <td class="pt-3-half" contenteditable="true"><select id="select${books[i].id}" name="Status">
-      <option value="inprogress">In Progress</option>
-      <option value="complete">Complete</option></select>
-      </select></td><td>
-      <span class="table-remove"><button type="button"
-          class="btn btn-danger btn-rounded btn-sm my-0">Update</button></span>
-      </td></td></tr>`)
+    if (loggedIn) {
+      // loop over books object array to populate table
+      for (let i = 0; i < books.length; i++) {
+        let bookStat = "";
+        if (books[i].status) { bookStat = "In Progress" } else { bookStat = "Complete" }
+        $("tbody").append(`<tr><td class="pt-3-half" contenteditable="true">${books[i].title}</td><td>${books[i].author}</td><td class="pt-3-half" contenteditable="true"> <span id="span${books[i].id}" data-pageid="${books[i].id}" contenteditable="true">${books[i].pages}</span></td><td class="pt-3-half"> ${books[i].totalPages} </td>
+        <td class="pt-3-half" contenteditable="true"><select id="select${books[i].id}" name="Status">
+        <option value="inprogress">In Progress</option>
+        <option value="complete">Complete</option></select>
+        </select></td><td>
+        <span class="table-remove"><button type="button"
+            class="btn btn-danger btn-rounded btn-sm my-0">Update</button></span>
+        </td></td></tr>`)
+      }
+    } else {
+      $("#tablecard").append('<div style="margin: 0 auto;"><p style="text-align:center;"><h4>Please login to see your book progress!</h4></p></div>');
     }
   })
 }
 // run showBooks
 showBooks();
+
+// function to login an existing user
+function login () {
+  let email = $("#email").val();
+  let password = $("#password").val();
+  let users = [];
+  $.get("/api/users", function(data){
+    users = data;
+    for (let j=0; j < users.length; j++) {
+      if (email === users[i].UserName && password === users[i].password) {
+        loggedIn = true;
+        showBooks();
+      }
+    }
+  })
+
+}
 
 // function to edit books table / update database / update button
 function updateStatus(event){
