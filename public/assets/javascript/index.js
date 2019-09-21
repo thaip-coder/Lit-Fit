@@ -127,8 +127,41 @@ function newBook(event) {
     });
   }).then(showBooks);
 };
-// on click functionality
-$(document).on("click","#nb",newBook);
+// function to add a blank row to our table
+function tableAdd(){
+  $("tbody").append(`<tr><td class="pt-3-half" contenteditable="true"><input class="form-control" id="newTitle" placeholder="Enter title"></td><td "pt-3-half"><input class="form-control" id="newAuthor" placeholder="Enter author"></td><td class="pt-3-half"><input class="form-control" id="newPages" placeholder="Pages read?"></td><td "pt-3-half"><input class="form-control" id="newTotal" placeholder="Total pages"></td>
+  <td class="pt-3-half"><select id="newStatus" name="Status">
+  <option value="inprogress">In Progress</option>
+  <option value="complete">Complete</option></select>
+  </select></td><td class="pt-3-half">
+  <span class="table-remove"><button id="addNew" type="button"
+      class="btn btn-primary btn-rounded btn-sm my-0">Add</button></span>
+  </td></td></tr>`)
+}
+// on click functionality to add a new table row
+$(document).on("click","button.table-add", tableAdd);
+
+// function to add a new book
+function newBook (){
+  let newStatus;
+  // boolean to set newStatus as a boolean so it can go in our table
+  if ($("#newPages").val() === "inprogress") { newStatus = false } else { newStatus = true };
+  let addedBook = {
+    title: $("#newTitle").val(),
+    author: $("#newAuthor").val(),
+    totalPages: parseInt($("#newTotal").val()),
+    status: newStatus,
+    pages: $("#newPages").val()
+  }
+  $.post("/api/all", addedBook).then(function(){
+    $("tbody").empty();
+    // rerun showBooks w/ updated table
+    showBooks();
+  });
+};
+// on click functionality to add a new book to the database
+$(document).on("click", "button#addNew", newBook)
+
 
 $("#confirmReg").on("click", function() {
   $("#collapseExample").removeClass("show");
