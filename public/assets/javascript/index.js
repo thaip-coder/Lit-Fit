@@ -47,6 +47,7 @@ function login () {
     for (let j=0; j < users.length; j++) {
       if (email === users[i].UserName && password === users[i].password) {
         loggedIn = true;
+        showBooks();
       }
     }
   })
