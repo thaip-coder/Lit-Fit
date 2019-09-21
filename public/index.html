@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
 </head>
 
@@ -21,10 +22,11 @@
   <nav class="container-fluid navbar navbar-light bg-light" id="navStyle">
 
     <!-- Navbar Title -->
-      <a class="navbar-brand" id="title" href="#"><h2><strong>Lit-Fit</strong></h2></a>
+    
+      <a class="navbar-brand animated infinite bounce delay-2s" id="title" href="#"><h2><strong>Lit-Fit</strong></h2></a>
 
       <!-- Register Button -->
-        <button class="btn btn-primary" id="register" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-primary animated infinite pulse delay-1s" id="register" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           Register
         </button><button class="btn btn-primary" id="logout" type="button">
           Logout
@@ -57,7 +59,7 @@
                             <input type="number" class="form-control" id="bookGoal" placeholder="Number of books to complete">
                           </div>
                         <hr>
-                        <button type="submit" id="confirmReg" class="btn btn-primary">Register</button>
+                        <button type="submit" id="confirmReg" class="btn btn-primary animated slideInLeft">Register</button>
                         <br>
                         <p style="margin-top: 5px;">If already a user please <a id="login" href="#" data-toggle="modal" data-target="#loginModal">Login</a></p>
                     </form>
