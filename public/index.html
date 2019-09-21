@@ -1,197 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
 
-    <title>Bootstrap Portfolio</title>
+  <title>Book Tracker</title>
 
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  </head>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-  <body>
+  <script type="text/javascript" src="../public/assets/javascript/home.js"></script>
 
+</head>
 
-          <nav class="container-fluid navbar navbar-light bg-light">
-              <a class="navbar-brand" id="title" href="#"><h2><strong>Book Tracker</strong></h2></a>
+<body>
+
+  <!-- Navbar -->
+  <nav class="container-fluid navbar navbar-light bg-light" id="navStyle">
+
+    <!-- Navbar Title -->
+      <a class="navbar-brand" id="title" href="#"><h2><strong>Lit-Fit</strong></h2></a>
+
+      <!-- Register Button -->
+        <button class="btn btn-primary" id="register" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Register
+        </button>
+
+          <!-- Container for Copllapsible form -->
+          <div class="container-fluid" style="padding-right: 0px; padding-left: 0px;">
+
+            <!-- Row for Collapsible form-->
+            <div class="row" style="width: 100%; margin-left: 2px;">
+
+              <div class="collapse" id="collapseExample" style="width: 100%;">
+                <div class="card card-body" style="margin-bottom: 15px; padding-bottom: 0px;">
+
+                    <!-- Register Form -->
+                    <form>
+                        <h1>Register</h1>
+                        <p>Please fill in this form to save progress.</p>
+                        <hr>
+                        <div class="form-group">
+                          <label for="email">Email address</label>
+                          <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" id="newPassword" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="goal">Book Goal</label>
+                            <input type="number" class="form-control" id="bookGoal" placeholder="Number of books to complete">
+                          </div>
+                        <hr>
+                        <button type="submit" id="confirmReg" class="btn btn-primary">Register</button>
+                        <br>
+                        <p style="margin-top: 5px;">If already a user please <a id="login" href="#" data-toggle="modal" data-target="#loginModal">Login</a></p>
+                    </form>
               
-                <button class="btn btn-primary" id="register" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                  Register
-                </button>
-
-                  <!-- Container for Collapsible form -->
-                  <div class="container-fluid" style="padding-right: 0px;">
-
-                    <div class="row" style="width: 100%; margin-left: 2px;">
-
-                      
-                      <div class="collapse" id="collapseExample" style="width: 100%;">
-                        <div class="card card-body" style="margin-bottom: 15px;">
-
-          
-                            <form>
-                                <h1>Register</h1>
-                                <p>Please fill in this form to save progress.</p>
-                                <hr>
-                                <div class="form-group">
-                                  <label for="exampleInputEmail1">Email address</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputPassword1">Password</label>
-                                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <label for="goal">Book Goal</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Number of books to complete">
-                                  </div>
-                                <hr>
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </form>
-                      
-
-                        </div>
-                      </div>
-                      
-
-                    </div><!-- End of Collapsible row -->
-
-                    
-                 <!-- Editable table -->
-                 <div class="row">
-
-                  <div class="col-2">
-                  <div class="card" id="side">
-                    <div class="card-body">
-                      <ul>
-                        <li><h3>Name</h3></li>
-                        <li><h3>Goals</h3></li>
-                        <li><h3>Progress</h3></li>
-                      </ul>
-                      
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at lectus id nunc consectetur tincidunt viverra et urna. Phasellus ac felis vestibulum, elementum arcu non, accumsan eros. Pellentesque eu elementum elit, vitae congue lectus. Vivamus cursus leo nunc, eu dapibus lectus auctor sit amet. Suspendisse non risus justo. Proin pulvinar libero nulla, quis suscipit est pulvinar at. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas posuere dolor rutrum, sodales leo tincidunt, aliquet libero. Proin congue lobortis cursus. Donec venenatis id est id vehicula. Praesent malesuada est in dui euismod, molestie luctus felis dictum. Suspendisse leo nisi, laoreet vitae vestibulum nec, venenatis id lorem. Phasellus et posuere orci. Integer ut tortor ante. Donec tincidunt commodo erat, quis molestie massa posuere ac.
-                      </p>
-                    </div>
-                  </div>
                 </div>
+              </div>
+              
 
-                    <div class="col-10">
-                    <div class="card">
-                        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Book Progress</h3>
-                        <div class="card-body">
-                          <div id="table" class="table-editable">
-                            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
-                                  class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
-                          <table class="table table-bordered table-responsive-md table-striped text-center">
-                            <thead>
-                              <tr>
-                                <th class="text-center">Book Title</th>
-                                <th class="text-center">Author</th>
-                                <th class="text-center">Pages Read</th>
-                                <th class="text-center">Total Pages</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Remove</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="pt-3-half" contenteditable="true">Aurelia Vega</td>
-                                <td class="pt-3-half" contenteditable="true">30</td>
-                                <td class="pt-3-half" contenteditable="true">Deepends</td>
-                                <td class="pt-3-half" contenteditable="true">Spain</td>
-                                <td class="pt-3-half" contenteditable="true">Madrid</td>
-                                
-                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                        aria-hidden="true"></i></a></span>
-                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                                        aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                                  <span class="table-remove"><button type="button"
-                                      class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                              </tr>
-                              <!-- This is our clonable table line -->
-                              <tr>
-                                <td class="pt-3-half" contenteditable="true">Guerra Cortez</td>
-                                <td class="pt-3-half" contenteditable="true">45</td>
-                                <td class="pt-3-half" contenteditable="true">Insectus</td>
-                                <td class="pt-3-half" contenteditable="true">USA</td>
-                                <td class="pt-3-half" contenteditable="true">San Francisco</td>
-                                
-                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                        aria-hidden="true"></i></a></span>
-                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                                        aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                                  <span class="table-remove"><button type="button"
-                                      class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                              </tr>
-                              <!-- This is our clonable table line -->
-                              <tr>
-                                <td class="pt-3-half" contenteditable="true">Guadalupe House</td>
-                                <td class="pt-3-half" contenteditable="true">26</td>
-                                <td class="pt-3-half" contenteditable="true">Isotronic</td>
-                                <td class="pt-3-half" contenteditable="true">Germany</td>
-                                <td class="pt-3-half" contenteditable="true">Frankfurt am Main</td>
-                            
-                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                        aria-hidden="true"></i></a></span>
-                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                                        aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                                  <span class="table-remove"><button type="button"
-                                      class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                              </tr>
-                              <!-- This is our clonable table line -->
-                              <tr class="hide">
-                                <td class="pt-3-half" contenteditable="true">Elisa Gallagher</td>
-                                <td class="pt-3-half" contenteditable="true">31</td>
-                                <td class="pt-3-half" contenteditable="true">Portica</td>
-                                <td class="pt-3-half" contenteditable="true">United Kingdom</td>
-                                <td class="pt-3-half" contenteditable="true">London</td>
-                               
-                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                        aria-hidden="true"></i></a></span>
-                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                                        aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                                  <span class="table-remove"><button type="button"
-                                      class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            </div><!-- End of Collapsible Row -->
+          </div> <!-- End of Collapsible Container -->
+  </nav> <!-- End of Nav -->
 
+  <!-- Container for body tables -->
+  <div class="container-fluid">
 
-                  </div> <!-- End of body Row -->
+    <!-- Row for tables -->
+    <div class="row">
+
+      <!-- Column for User Info Table -->
+      <div class="col-2">
+        <div class="card" id="userInfo">
+          <div class="card-body">
+            <ul>
+              <li><img id="avatar" src="../public/assets/images/avatar.png" alt="Avatar"></li>
+              <li><hr></li>
+              <li><h3 class="text-center">Name</h3></li>
+              <li><h3 class="text-center">Goal</h3></li>
+            </ul>
+            <hr>
+            <p>
+                There are all kinds of fitness and health trackers for the body, but what about the mind? Reading is an important part of mental fitness and the Literary Fitness Tracker will allow bookletes (like athletes but with BOOKS) everywhere to track their gains! 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column for Book Table-->
+      <div class="col-10">
+        <div class="card">
+            <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Book Library</h3>
+            <button class="table-add" id="addBook"><a href="#!" class="text-success">Add Book</a></button>
+            <div class="card-body">
+              <div id="table" class="table-editable">
+                
+              <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                  <tr>
+                    <th class="text-center">Book Title</th>
+                    <th class="text-center">Author</th>
+                    <th class="text-center">Pages Read</th>
+                    <th class="text-center">Total Pages</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Update</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="pt-3-half" contenteditable="true">To Kill a Mockingbird</td>
+                    <td class="pt-3-half" contenteditable="true">Harper Lee</td>
+                    <td class="pt-3-half" contenteditable="true">22</td>
+                    <td class="pt-3-half" contenteditable="true">324</td>
+                    <td class="pt-3-half" contenteditable="true">In Progress</td>
                     
-                    <!-- Editable table -->
+                      <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                            aria-hidden="true"></i></a></span>
+                      <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                            aria-hidden="true"></i></a></span>
+                    </td>
+                    <td>
+                      <span class="table-remove"><button type="button"
+                          class="btn btn-danger btn-rounded btn-sm my-0">Update</button></span>
+                    </td>
+                  </tr>
+                  <!-- This is our clonable table line -->
+                  <tr>
+                    <td class="pt-3-half" contenteditable="true">Green Eggs and Ham</td>
+                    <td class="pt-3-half" contenteditable="true">Dr. Seuss</td>
+                    <td class="pt-3-half" contenteditable="true">62</td>
+                    <td class="pt-3-half" contenteditable="true">62</td>
+                    <td class="pt-3-half" contenteditable="true">Completed</td>
+                    
+                      <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                            aria-hidden="true"></i></a></span>
+                      <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                            aria-hidden="true"></i></a></span>
+                    </td>
+                    <td>
+                      <span class="table-remove"><button type="button"
+                          class="btn btn-danger btn-rounded btn-sm my-0">Update</button></span>
+                    </td>
+                  </tr>
+                  <!-- This is our clonable table line -->
+                  <tr>
+                    <td class="pt-3-half" contenteditable="true">The Book Thief</td>
+                    <td class="pt-3-half" contenteditable="true">Markus Zusak</td>
+                    <td class="pt-3-half" contenteditable="true">0</td>
+                    <td class="pt-3-half" contenteditable="true">552</td>
+                    <td class="pt-3-half" contenteditable="true">In Progress</td>
+                
+                      <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                            aria-hidden="true"></i></a></span>
+                      <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                            aria-hidden="true"></i></a></span>
+                    </td>
+                    <td>
+                      <span class="table-remove"><button type="button"
+                          class="btn btn-danger btn-rounded btn-sm my-0">Update</button></span>
+                    </td>
+                  </tr>
+                  <!-- This is our clonable table line -->
+                  <tr class="hide">
+                    <td class="pt-3-half" contenteditable="true">The Giving Tree</td>
+                    <td class="pt-3-half" contenteditable="true">Shel Silverstein</td>
+                    <td class="pt-3-half" contenteditable="true">30</td>
+                    <td class="pt-3-half" contenteditable="true">64</td>
+                    <td class="pt-3-half" contenteditable="true">In Progress</td>
+                    
+                      <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                            aria-hidden="true"></i></a></span>
+                      <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                            aria-hidden="true"></i></a></span>
+                    </td>
+                    <td>
+                      <span class="table-remove"><button type="button"
+                          class="btn btn-danger btn-rounded btn-sm my-0">Update</button></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                  </div><!-- End of Container -->
+    </div> <!-- End of body Row -->
+  </div><!-- End of Container -->
 
-          </nav>
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
-   
-  </body>
+          <!-- Login Form -->
+          <div class="modal-body">
+              <div class="form-group">
+                  <label for="inputEmail">Email address</label>
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+              </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+  </div> <!-- End of Modal -->
+
+</body>
       
 </html>
