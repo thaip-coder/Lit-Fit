@@ -58,9 +58,6 @@ function login (){
 };
 $(document).on("click", "button#login2", login);
 
-function logout() {
-  loggedIn = false;
-}
 
 // function to edit books table / update database / update button
 function updateStatus(event){
