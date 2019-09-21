@@ -1,3 +1,9 @@
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
 body {
     background-image: url(../images/read1.jpeg);
     background-repeat: no-repeat;
