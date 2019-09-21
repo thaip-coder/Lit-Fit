@@ -33,15 +33,14 @@ module.exports = function (app) {
       title: req.body.title,
       author: req.body.author,
       totalPages: req.body.totalPages,
-      status: true,
-      pages: 0
+      status: req.body.status,
+      pages: req.body.pages
     }).then(function(results){
       res.json(results);
     });
   });
   // Update a book
   app.put("/api/book/:id", function(req, res) {
-    //  res.json({"a":"b"});
     db.Books.update(
       {
           status: req.body.status,
