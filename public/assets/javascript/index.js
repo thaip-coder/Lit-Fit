@@ -70,16 +70,16 @@ function updateStatus(event){
   let statusSelect = $("#"+selectid).val();
   // takes the status and swaps it to a boolean
   if (statusSelect === "inprogress" ) {
-    books[id].status = true;
+    books[0].status = true;
   } else {
-    books[id].status = false;
+    books[0].status = false;
   }
   // parseInts the text and edits the object value
-  books[id].pages = parseInt($("#"+spanid).text());
+  books[0].pages = parseInt($("#"+spanid).text());
   // stores new statuses in object
   let newstatus = {
-    status: books[id].status,
-    pages: books[id].pages
+    status: books[0].status,
+    pages: books[0].pages
   }
   // posts the edits to the table
   $.ajax({
