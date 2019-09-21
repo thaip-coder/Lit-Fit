@@ -55,7 +55,7 @@ function login (){
     };
   });
 };
-$(document).on("click", "button#login", login);
+$(document).on("click", "button#login2", login);
 
 // function to edit books table / update database / update button
 function updateStatus(event){
@@ -98,9 +98,9 @@ function newUser(event) {
   // posts the user to the users table
   $.post("/api/users", user).then(function(){
     // once user is posted to the table, empty the values of the input form
-    $("#newEmail").empty();
-    $("#newPassword").empty();
-    $("#bookGoal").empty();
+    $("#newEmail").val("");
+    $("#newPassword").val("");
+    $("#bookGoal").val("");
     // collapse the modal after
     $("#collapseExample").removeClass("show");
     $("#collapseExample").addClass("hidden");
@@ -108,7 +108,6 @@ function newUser(event) {
 }
 // calls newUser upon clicking of appropriate button
 $(document).on("click", "button#confirmReg", newUser);
-
 // function to add a book
 function newBook(event) {
   event.preventDefault();
@@ -129,5 +128,19 @@ function newBook(event) {
 // on click functionality
 $(document).on("click","#nb",newBook);
 
+$("#confirmReg").on("click", function() {
+  // Collapses Register form
+ $("#collapseExample").removeClass("show");
+$("#loginModal").modal("toggle");
+ // Hides register button
+ //$("#register").hide()
+})
+
+$("#login2").on("click", function() {
+  // Collapses Register form
+ $("#collapseExample").removeClass("show");
+ $("#loginModal").modal("toggle");
+ 
+})
 // closing document.ready function
 });
