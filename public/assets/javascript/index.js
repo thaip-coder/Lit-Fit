@@ -82,7 +82,14 @@ function updateStatus(event){
     pages: books[id].pages
   }
   // posts the edits to the table
-  $.put("/api/book/"+id, newstatus).then(console.log("Row updated!"));
+  $.ajax({
+    url: "/api/book/"+id,
+    type: "PUT",
+    data: newstatus,
+    success: function(data){
+      (console.log("Row updated with: "+ data));
+    }
+  });
 };
 // on click for the update status function
 $(document).on("click", "button.update",updateStatus)
