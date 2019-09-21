@@ -62,13 +62,21 @@ function newUser(event) {
   event.preventDefault();
   // store input fields into an object
   var user = {
-    UserName: $("#newEmail").text(),
-    password: $("#newPassword").text(),
-    booksGoal: $("#bookGoal").text()
+    UserName: $("#newEmail").val(),
+    password: $("#newPassword").val(),
+    booksGoal: parseInt($("#bookGoal").val())
   };
-  console.log(user);
+  console.log(`${user.UserName} has been added to the database!`);
   // posts the user to the users table
-  //$.post("/api/users", user);
+  $.post("/api/users", user).then(function(){
+    // once user is posted to the table, empty the values of the input form
+    $("#newEmail").empty();
+    $("#newPassword").empty();
+    $("#bookGoal").empty();
+    // collapse the modal after
+    $("#collapseExample").removeClass("show");
+    $("#collapseExample").addClass("hidden");
+  });
 }
 // calls newUser upon clicking of appropriate button
 $(document).on("click", "button#confirmReg", newUser);
