@@ -5,10 +5,9 @@ $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
 
-/* CODE FOR DISPLAYING STUFF BASED OFF OF API ROUTING, on click events post to our database API urls then use get requests to pull data and display it */
+/* BACKEND INTEGRATION */
 // declare books as an empty array, this will be updated every time the showBooks function is called and iterated to display in our HTML
 var books = [];
-
 // function to display our user's books
 function showBooks(){
   $.get("/api/all", function(data){
@@ -18,10 +17,14 @@ function showBooks(){
     for (let i = 0; i < books.length; i++) {
       let bookStat = "";
       if (books[i].status) { bookStat = "In Progress" } else { bookStat = "Complete" }
-      $("#table").append(`<tr><td>${books[i].title}</td><td>${books[i].author}</td><td> <span id="span${books[i].id}" data-pageid="${books[i].id}" contenteditable="true">${books[i].pages}</span> / ${books[i].totalPages} </td><td><select id="select${books[i].id}" name="Status">
+      $("tbody").append(`<tr><td class="pt-3-half" contenteditable="true">${books[i].title}</td><td>${books[i].author}</td><td class="pt-3-half" contenteditable="true"> <span id="span${books[i].id}" data-pageid="${books[i].id}" contenteditable="true">${books[i].pages}</span></td><td class="pt-3-half"> ${books[i].totalPages} </td>
+      <td class="pt-3-half" contenteditable="true"><select id="select${books[i].id}" name="Status">
       <option value="inprogress">In Progress</option>
       <option value="complete">Complete</option></select>
-    </select></td><td><button class="update" data-updateid="${books[i].id}">Update</button></td></tr>`)
+      </select></td><td>
+      <span class="table-remove"><button type="button"
+          class="btn btn-danger btn-rounded btn-sm my-0">Update</button></span>
+      </td></td></tr>`)
     }
   })
 }
